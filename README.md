@@ -1,5 +1,5 @@
-# Đề tài môn Công nghệ phần mềm <h2>
-Tên đề tài: App đặt bàn
+## Đề tài môn Công nghệ phần mềm <h2>
+Tên đề tài: App đặt bàn<br/>
 Nhóm 12:
   1. Đặng Quốc Trung  18110220
   2. Phạm Quốc Hưng   18110128
