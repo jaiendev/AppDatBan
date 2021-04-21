@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "172017045703",
+    "project_id": "appdatban",
+    "storage_bucket": "appdatban.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172017045703:android:12d3e11aa3cf0fc4c02ee2",
+        "android_client_info": {
+          "package_name": "com.trungdang.appdatban"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172017045703-tfohah9svpjq9l3978pc04pf0udrd0ev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-ZQyG-E-BfGjDQBwg1qP0e_mxeIMsOfs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172017045703-tfohah9svpjq9l3978pc04pf0udrd0ev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

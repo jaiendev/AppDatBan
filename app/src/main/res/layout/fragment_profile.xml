@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home.ProfileFragment">
+
+    <LinearLayout
+        android:background="#E5E5E5"
+        android:weightSum="12"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <RelativeLayout
+                android:layout_gravity="center"
+                android:layout_weight="4"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/imganhdaidien"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"/>
+                <TextView
+                    android:layout_below="@id/imganhdaidien"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="Naruto"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnVivoucher"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:text="Ví voucher"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <Button
+            android:id="@+id/btnThanhtoan"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:text="Thanh toán"
+            android:layout_marginTop="2dp"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <Button
+            android:id="@+id/btnChinhsachquidinh"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:text="Chính sách qui định"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <Button
+            android:id="@+id/btnCaidat"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:text="Cài đặt"
+            android:layout_marginTop="2dp"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <Button
+            android:id="@+id/btnVeChungtoi"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:text="Về chúng tôi"
+            android:layout_marginTop="2dp"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+        <Button
+            android:textColor="@color/primarycolor"
+            android:layout_gravity="center"
+            android:id="@+id/btnDangxuat"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:text="Đăng xuất"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/custom_buttondangxuat"
+            android:layout_weight="0.8"
+            android:layout_width="350dp"
+            android:layout_height="0dp"/>
+    </LinearLayout>
+
+</FrameLayout>
