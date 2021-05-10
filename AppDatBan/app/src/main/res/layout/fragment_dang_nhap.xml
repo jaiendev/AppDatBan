@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DangNhap">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:weightSum="8"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_weight="1.8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:id="@+id/txtusername"
+                android:text="Số di động hoặc Email"
+                android:textSize="15sp"
+                android:textColor="#90000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:weightSum="9"
+                android:orientation="horizontal"
+                android:background="@drawable/custom_edittext"
+                android:layout_below="@id/txtusername"
+                android:layout_width="259dp"
+                android:layout_height="40dp">
+                <ImageView
+                    android:background="#ECF0F1"
+                    android:src="@drawable/mail2"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="20dp"/>
+                <EditText
+                    android:layout_weight="8"
+                    android:padding="10dp"
+                    android:id="@+id/editusername"
+                    android:background="@drawable/custom_edittext"
+                    android:textSize="15sp"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp">
+
+                </EditText>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_weight="1.8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:id="@+id/txtMatKhau"
+                android:text="Mật khẩu"
+                android:textSize="15sp"
+                android:textColor="#90000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:weightSum="9"
+                android:orientation="horizontal"
+                android:background="@drawable/custom_edittext"
+                android:layout_below="@id/txtMatKhau"
+                android:layout_width="259dp"
+                android:layout_height="40dp">
+                <ImageView
+                    android:background="#ECF0F1"
+                    android:src="@drawable/password"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="20dp"/>
+                <EditText
+                    android:inputType="textPassword"
+                    android:layout_weight="7"
+                    android:padding="10dp"
+                    android:id="@+id/editpassword"
+                    android:background="@drawable/custom_edittext"
+                    android:textSize="15sp"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp">
+                </EditText>
+                <ImageView
+                    android:id="@+id/imgshowpassword"
+                    android:src="@drawable/ic_baseline_remove_red_eye_24"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtquenmatkhau"
+            android:gravity="center"
+            android:textColor="#F81265"
+            android:textSize="22sp"
+            android:text="Quên mật khẩu?"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <Button
+            android:id="@+id/btnDangNhap"
+            android:layout_marginTop="80dp"
+            android:layout_weight="0.25"
+            android:textSize="21sp"
+            android:text="Đăng nhập"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/custome_buttondangnhap"
+            android:layout_gravity="center"
+            android:layout_width="256dp"
+            android:layout_height="48dp"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+</FrameLayout>
