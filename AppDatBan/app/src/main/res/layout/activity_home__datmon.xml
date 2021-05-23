@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="12"
+    tools:context=".Datmon.Home_Datmon">
+    <androidx.viewpager.widget.ViewPager
+        android:layout_weight="11.2"
+        android:id="@+id/viewpagerHomedatmon"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <com.google.android.material.tabs.TabLayout
+        app:tabIndicatorColor="#FFFFFF"
+        app:tabGravity="fill"
+        app:tabSelectedTextColor="#F81265"
+        android:id="@+id/tablayoutHomedatmon"
+        android:layout_weight="0.8"
+        app:tabTextAppearance="@style/MineCustomTabText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+</LinearLayout>

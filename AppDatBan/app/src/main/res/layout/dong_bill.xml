@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="5dp"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/txttenmonBill"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:text="Cơm chiên"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/txttienmonbill"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:text="15.000 VNĐ"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:text="SL"
+        android:layout_weight="0.3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:background="@drawable/custom_khung_dat_mon"
+        android:weightSum="4"
+        android:orientation="horizontal"
+        android:layout_weight="0.7"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imgSubtractBill"
+            android:src="@drawable/ic_baseline_remove_24"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:id="@+id/txtsoluongBill"
+            android:text="1"
+            android:textSize="13sp"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/imgAddBill"
+            android:src="@drawable/ic_baseline_add_24"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</LinearLayout>

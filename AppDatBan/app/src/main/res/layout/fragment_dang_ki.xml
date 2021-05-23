@@ -120,7 +120,7 @@
                     android:layout_height="20dp"/>
                 <EditText
                     android:inputType="textPassword"
-                    android:layout_weight="8"
+                    android:layout_weight="7"
                     android:padding="10dp"
                     android:id="@+id/editmatkhau1"
                     android:background="@drawable/custom_edittext"
@@ -128,6 +128,14 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp">
                 </EditText>
+                <ImageView
+                    android:id="@+id/imgshowpassword1"
+                    android:src="@drawable/ic_baseline_remove_red_eye_24"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"/>
             </LinearLayout>
 
         </RelativeLayout>
@@ -160,7 +168,7 @@
                     android:layout_height="20dp"/>
                 <EditText
                     android:inputType="textPassword"
-                    android:layout_weight="8"
+                    android:layout_weight="7"
                     android:padding="10dp"
                     android:id="@+id/editmatkhau2"
                     android:background="@drawable/custom_edittext"
@@ -168,6 +176,14 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp">
                 </EditText>
+                <ImageView
+                    android:id="@+id/imgshowpassword2"
+                    android:src="@drawable/ic_baseline_remove_red_eye_24"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"/>
             </LinearLayout>
 
         </RelativeLayout>

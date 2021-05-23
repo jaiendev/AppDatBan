@@ -9,6 +9,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.trungdang.appdatban.Home.Home;
+import com.trungdang.appdatban.HomeAdmin.HomeAdmin;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,8 +54,11 @@ public class DangNhap extends androidx.fragment.app.Fragment {
     Button btnDangNhap;
     FirebaseAuth fAuth;
     FirebaseUser fUser;
+    FirebaseFirestore fStore;
+    private String password="",
+                    email="",
+                    UserID="";
     AlertDialog.Builder reset_alert;
-    LayoutInflater inflater;
     ImageView imgshowpassword;
     private int passwordNotVisible = 1;
     public DangNhap() {
@@ -96,6 +104,7 @@ public class DangNhap extends androidx.fragment.app.Fragment {
         btnDangNhap=(Button) view.findViewById(R.id.btnDangNhap);
         fAuth= FirebaseAuth.getInstance();
         fUser=FirebaseAuth.getInstance().getCurrentUser();
+        fStore=FirebaseFirestore.getInstance();
         reset_alert=new AlertDialog.Builder(getActivity());
         imgshowpassword=view.findViewById(R.id.imgshowpassword);
         inflater=this.getLayoutInflater();
@@ -124,10 +133,7 @@ public class DangNhap extends androidx.fragment.app.Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(getActivity(),"Đăng nhập thành công",Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getActivity().getApplicationContext(), Home.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            getActivity().finish();
+                            CheckRole();
                         }
                         else {
                             Toast.makeText(getActivity().getApplicationContext(),"Lỗi ! ",Toast.LENGTH_LONG).show();
@@ -186,5 +192,39 @@ public class DangNhap extends androidx.fragment.app.Fragment {
         });
         return view;
 
+    }
+    private void CheckRole() {
+        UserID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("Users").document(UserID);
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                        String role = document.getString("loai");
+                        Intent intent = new Intent();
+                        switch (role) {
+                            case "Customer":
+                                intent = new Intent(getContext(), Home.class);
+                                break;
+                            case "Admin":
+                                intent = new Intent(getActivity(), HomeAdmin.class);
+                                break;
+                            default:
+                                break;
+                        }
+                        startActivity(intent);
+                        getActivity().finish();
+                    } else {
+                        Log.d("TAG", "No such document");
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                }
+            }
+
+        });
     }
 }

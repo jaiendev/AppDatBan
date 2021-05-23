@@ -1,15 +1,12 @@
-package com.trungdang.appdatban.Home;
+package com.trungdang.appdatban.Datmon.fragment_Datmon.TrangMieng;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,22 +14,29 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.trungdang.appdatban.MainActivity;
+import com.trungdang.appdatban.Datmon.fragment_Datmon.Monchinh.DongMonChinh;
+import com.trungdang.appdatban.Datmon.fragment_Datmon.Monchinh.DongMonChinhAdapter;
 import com.trungdang.appdatban.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
+ * Use the {@link Trangmieng#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends Fragment {
+public class Trangmieng extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,15 +46,17 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Button btnDangxuat;
     FirebaseFirestore fStore;
     FirebaseStorage fStorage;
     StorageReference storageRef;
-    FirebaseAuth fAuth=FirebaseAuth.getInstance();
-    ImageView imgHinhUser;
-    TextView txtTenUser;
+    FirebaseAuth fAuth;
+    ListView listViewMonTrangMieng;
+    DongMonChinhAdapter TrangMiengadapter;
+    ArrayList<DongMonChinh> TrangmiengArratlist;
     String IDUser;
-    public ProfileFragment() {
+    TextView txtTenUser;
+    ImageView imageViewHinhUser;
+    public Trangmieng() {
         // Required empty public constructor
     }
 
@@ -60,11 +66,11 @@ public class ProfileFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
+     * @return A new instance of fragment Trangmieng.
      */
     // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
+    public static Trangmieng newInstance(String param1, String param2) {
+        Trangmieng fragment = new Trangmieng();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,20 +91,24 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_profile, container, false);
-        Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.man);
-        Bitmap circularBitmap = ImageConverter.getRoundedCornerBitmap(bitmap, 100);
+        View view= inflater.inflate(R.layout.fragment_trangmieng, container, false);
+        AnhXa(view);
+        return view;
+    }
+    private void AnhXa(View view){
+        listViewMonTrangMieng=view.findViewById(R.id.listviewhomeTrangmieng);
+        txtTenUser=view.findViewById(R.id.txtTenUserTrangmieng);
+        imageViewHinhUser=view.findViewById(R.id.imgHomeCustomerTrangmieng);
+        TrangmiengArratlist=new ArrayList<>();
+        TrangMiengadapter=new DongMonChinhAdapter(getActivity(),R.layout.dong_mon_chinh,TrangmiengArratlist);
+        listViewMonTrangMieng.setAdapter(TrangMiengadapter);
+        fAuth           = FirebaseAuth.getInstance();
         fStore          = FirebaseFirestore.getInstance();
         fStorage        = FirebaseStorage.getInstance();
         storageRef      = fStorage.getReference();
         IDUser=fAuth.getCurrentUser().getUid();
-        imgHinhUser = view.findViewById(R.id.imganhdaidien);
-        txtTenUser=view.findViewById(R.id.txtTenUserProfile);
+        GetProducts();
         getNameUser();
-        imgHinhUser.setImageBitmap(circularBitmap);
-        Dangxuat(view);
-
-        return view;
     }
     public void getNameUser(){
         DocumentReference documentReference = fStore.collection("Users").document(IDUser);
@@ -113,7 +123,7 @@ public class ProfileFragment extends Fragment {
                         txtTenUser.setText(name);
                         Glide.with(getActivity())
                                 .load(Img)
-                                .into(imgHinhUser);
+                                .into(imageViewHinhUser);
                     }
                     else {
                         Log.d("TAG", "No such document");
@@ -125,16 +135,38 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
-    private void Dangxuat(View view)
-    {
-        btnDangxuat=view.findViewById(R.id.btnDangxuat);
-        btnDangxuat.setOnClickListener(new View.OnClickListener() {
+    public void GetProducts() {
+        CollectionReference productRefs = fStore.collection("Eaten");
+        productRefs.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onClick(View v) {
-                fAuth.signOut();
-                startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
-                getActivity().finish();
+            public  void onSuccess(QuerySnapshot documentSnapshots) {
+                if (documentSnapshots.isEmpty()) {
+                    Log.d("TAG", "onSuccess: LIST EMPTY");
+                    return;
+                } else {
+                    for (DocumentSnapshot document : documentSnapshots) {
+                        String id           = document.getId();
+                        String tenmon         = (String) document.get("TenMon");
+                        String gia       = (String) document.get("GiaTien");
+                        String Tenloai  = (String) document.get("TenLoai");
+                        String hinh    =  (String) document.get("Hinh");
+                        String idloai =(String) document.get("idLoai");
+                        if(idloai.equals("2"))
+                        {
+                            DongMonChinh Mon = new DongMonChinh(idloai,id,hinh,tenmon,"1",gia,Tenloai);
+                            TrangmiengArratlist.add(Mon);
+                        }
+
+                    }
+                    TrangMiengadapter.notifyDataSetChanged();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TAG","Error");
             }
         });
     }
+
 }

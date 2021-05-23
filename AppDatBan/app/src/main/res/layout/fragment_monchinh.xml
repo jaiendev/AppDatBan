@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Datmon.fragment_Datmon.Monchinh.Monchinh">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:weightSum="12"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="8"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#DC2020"
+                android:textSize="20sp"
+                android:text="Nhóm 12"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/imgHomeCustomerDatmon"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:id="@+id/txtTenUserDatmon"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="#B553677A"
+                android:textStyle="bold"
+                android:text=""
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/custome_edittextsearch"
+            android:layout_weight="1"
+            android:layout_width="320dp"
+            android:layout_height="0dp">
+            <ImageView
+                android:id="@+id/imgsearch"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="30dp"
+                android:background="#ECF0F1"
+                android:src="@drawable/ic_baseline_search_24"
+                android:layout_width="20dp"
+                android:layout_height="28dp"/>
+            <EditText
+
+                android:layout_width="250dp"
+                android:hint="Tìm món... ?"
+                android:padding="5dp"
+                android:id="@+id/editsearch"
+                android:background="@drawable/custom_edittext"
+                android:textSize="15sp"
+                android:layout_toRightOf="@id/imgsearch"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.5"
+            android:layout_width="130dp"
+            android:layout_height="0dp">
+
+        </LinearLayout>
+        <TextView
+            android:layout_marginLeft="25dp"
+            android:textSize="18sp"
+            android:text="Món chính hiện có"
+            android:layout_weight="0.7"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <ListView
+            android:clickable="true"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="8dp"
+            android:id="@+id/listviewhomemonchinh"
+            android:layout_weight="8.8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+    </LinearLayout>
+
+</FrameLayout>

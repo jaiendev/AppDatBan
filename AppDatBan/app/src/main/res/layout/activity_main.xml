@@ -19,7 +19,7 @@
         android:layout_height="0dp"/>
 
     <com.google.android.material.tabs.TabLayout
-        app:tabTextAppearance="@style/MineCustomTabText"
+        app:tabTextAppearance="@style/MineCustomTabTextHome"
         android:layout_weight="1"
         android:id="@+id/idtablayout"
         android:layout_width="match_parent"

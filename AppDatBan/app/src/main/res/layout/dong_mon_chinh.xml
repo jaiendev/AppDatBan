@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:padding="8dp"
+    android:background="@drawable/custom_listview"
+    android:outlineSpotShadowColor="@color/cardview_shadow_end_color"
+    android:outlineAmbientShadowColor="@color/cardview_shadow_end_color"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imghinhmonchinh"
+        android:layout_marginLeft="10dp"
+        android:layout_width="80dp"
+        android:layout_height="60dp"/>
+    <TextView
+        android:id="@+id/txtTenmonchinh"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/imghinhmonchinh"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="13sp"
+        android:text="Lẩu thái"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:background="@drawable/custom_khung_dat_mon"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:id="@+id/line1"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/imghinhmonchinh"
+        android:layout_below="@id/txtTenmonchinh"
+        android:layout_width="60dp"
+        android:layout_height="20dp">
+        <ImageView
+            android:id="@+id/imgSubtract"
+            android:src="@drawable/ic_baseline_remove_24"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:id="@+id/txtsoluongmonchinh"
+            android:text="1"
+            android:textSize="12sp"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/imgAdd"
+            android:src="@drawable/ic_baseline_add_24"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <TextView
+        android:textSize="12sp"
+        android:id="@+id/txtgiatienmonchinh"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/imghinhmonchinh"
+        android:layout_below="@id/line1"
+        android:textColor="@color/black"
+        android:text="Giá: 500.000 VNĐ"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txtmonchinhmacdinh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_toRightOf="@id/txtTenmonchinh"
+        android:text="Món chính"
+        android:textColor="@color/black"
+        android:textSize="8sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:textSize="10sp"
+        android:id="@+id/btnDatmonHomeDatmon"
+        android:textAllCaps="false"
+        android:text="Đặt"
+        android:background="@drawable/custom_khung_dat_mon"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/txtmonchinhmacdinh"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="28dp"
+        android:layout_toRightOf="@id/txtgiatienmonchinh" />
+</RelativeLayout>

@@ -1,13 +1,23 @@
 package com.trungdang.appdatban.Home;
 
 public class Datbanhome {
-    private int Hinhdatban;
+    public String idban;
+    private String Hinhdatban;
     private String Soban;
     private String Mota;
     private String giatien;
     private String theloai;
 
-    public Datbanhome(int hinhdatban, String soban, String mota, String giatien, String theloai) {
+    public Datbanhome(String idban,String hinhdatban, String soban, String mota, String giatien, String theloai) {
+        Hinhdatban = hinhdatban;
+        this.idban=idban;
+        Soban = soban;
+        Mota = mota;
+        this.giatien = giatien;
+        this.theloai = theloai;
+    }
+
+    public Datbanhome(String hinhdatban, String soban, String mota, String giatien, String theloai) {
         Hinhdatban = hinhdatban;
         Soban = soban;
         Mota = mota;
@@ -15,11 +25,19 @@ public class Datbanhome {
         this.theloai = theloai;
     }
 
-    public int getHinhdatban() {
+    public String getIdban() {
+        return idban;
+    }
+
+    public void setIdban(String idban) {
+        this.idban = idban;
+    }
+
+    public String getHinhdatban() {
         return Hinhdatban;
     }
 
-    public void setHinhdatban(int hinhdatban) {
+    public void setHinhdatban(String hinhdatban) {
         Hinhdatban = hinhdatban;
     }
 

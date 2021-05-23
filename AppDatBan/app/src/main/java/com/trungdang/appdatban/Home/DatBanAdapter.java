@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.trungdang.appdatban.R;
 
 import java.util.List;
@@ -64,8 +65,10 @@ public class DatBanAdapter extends BaseAdapter {
         Datbanhome datbanhome= datbanhomes.get(position);
         viewHorder.Soban.setText(datbanhome.getSoban());
         viewHorder.Mota.setText(datbanhome.getMota());
-        viewHorder.imghinhdatban.setImageResource(datbanhome.getHinhdatban());
-        viewHorder.Giatien.setText(datbanhome.getGiatien());
+        Glide.with(context)
+                .load(datbanhome.getHinhdatban())
+                .into(viewHorder.imghinhdatban);
+        viewHorder.Giatien.setText("Giá chung: "+datbanhome.getGiatien());
         viewHorder.Theloai.setText(datbanhome.getTheloai());
         return convertView;
     }

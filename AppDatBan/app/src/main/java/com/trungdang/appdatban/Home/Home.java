@@ -1,20 +1,20 @@
 package com.trungdang.appdatban.Home;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.tabs.TabLayout;
 import com.trungdang.appdatban.R;
-import com.trungdang.appdatban.ViewPagerAdapter;
 
 public class Home extends AppCompatActivity {
     private TabLayout tablayoutHome;
     private ViewPager viewPagerHome;
+    public String idUser;
     private int[] tabIcons = {
         R.drawable.ic_baseline_home,R.drawable.ic_baseline_list_alt_24,R.drawable.ic_baseline_khuyenmai,R.drawable.ic_baseline_account_circle_24
     };
@@ -34,6 +34,10 @@ public class Home extends AppCompatActivity {
         tablayoutHome.getTabAt(2).getIcon().setColorFilter(Color.parseColor("#FF000000"), PorterDuff.Mode.SRC_IN);
         tablayoutHome.getTabAt(3).getIcon().setColorFilter(Color.parseColor("#FF000000"), PorterDuff.Mode.SRC_IN);
 
+        tablayoutHome.getTabAt(0).setText("Trang chủ");
+        tablayoutHome.getTabAt(1).setText("Lịch sử giao dịch");
+        tablayoutHome.getTabAt(2).setText("Khuyến mãi");
+        tablayoutHome.getTabAt(3).setText("Profile");
         tablayoutHome.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
