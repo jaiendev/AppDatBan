@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +62,7 @@ public class DangNhap extends androidx.fragment.app.Fragment {
     AlertDialog.Builder reset_alert;
     ImageView imgshowpassword;
     private int passwordNotVisible = 1;
+    ProgressBar progressBar;
     public DangNhap() {
         // Required empty public constructor
     }
@@ -107,6 +109,7 @@ public class DangNhap extends androidx.fragment.app.Fragment {
         fStore=FirebaseFirestore.getInstance();
         reset_alert=new AlertDialog.Builder(getActivity());
         imgshowpassword=view.findViewById(R.id.imgshowpassword);
+        progressBar=view.findViewById(R.id.prbDangNhap);
         inflater=this.getLayoutInflater();
 
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +136,7 @@ public class DangNhap extends androidx.fragment.app.Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(getActivity(),"Đăng nhập thành công",Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.VISIBLE);
                             CheckRole();
                         }
                         else {

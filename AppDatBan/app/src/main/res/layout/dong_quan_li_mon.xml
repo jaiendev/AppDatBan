@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout
+    android:id="@+id/swiperevealLayoutquanlymon"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutphuquanlymon"
+        android:layout_marginLeft="10dp"
+        android:layout_width="100dp"
+        android:layout_height="73dp"
+        android:background="#FF0000">
+
+        <ImageView
+            android:id="@+id/imgthungracquanlymon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_delete" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:padding="8dp"
+        android:background="@drawable/custom_listview"
+        android:outlineSpotShadowColor="@color/cardview_shadow_end_color"
+        android:outlineAmbientShadowColor="@color/cardview_shadow_end_color"
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imghinhquanlymon"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"/>
+        <TextView
+            android:id="@+id/txtTenmonquanlymon"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/imghinhquanlymon"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="12sp"
+            android:text="Lẩu thái"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/imghinhquanlymon"
+                android:layout_below="@id/txtTenmonquanlymon"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:id="@+id/txtdonviquanlymon"
+                android:text="Đơn vị: 1 phần"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="12sp"
+            android:id="@+id/txtgiatienmonquanlymon"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/imghinhquanlymon"
+            android:layout_below="@id/txtdonviquanlymon"
+            android:textColor="@color/black"
+            android:text="Giá: 500.000 VNĐ"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtloaimonquanlymon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/txtTenmonquanlymon"
+            android:text="Món chính"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

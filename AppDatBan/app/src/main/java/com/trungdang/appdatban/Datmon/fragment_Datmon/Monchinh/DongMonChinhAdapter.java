@@ -12,13 +12,21 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.trungdang.appdatban.Datmon.fragment_Datmon.Bill.Bill;
+import com.trungdang.appdatban.Datban.Datban;
 import com.trungdang.appdatban.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DongMonChinhAdapter extends BaseAdapter {
+    public static List<String> soluongdat=new ArrayList<String>();
+    public static int tonggiaban=0;
+    private static int Giatienmon=0;
+    public static int tonggiamon=0;
+    public static List<String> idMons = new ArrayList<String>();
+    public static List<String> Monchinhdachon=new ArrayList<String>();
+    public static List<String> TrangMiengdachon=new ArrayList<String>();
+    public static List<String> Giaikhatdachon=new ArrayList<String>();
     public List<String> TenMon;
     private Context context;
     private int layout;
@@ -82,7 +90,7 @@ public class DongMonChinhAdapter extends BaseAdapter {
         Glide.with(context)
                 .load(dongMonChinh.getHinhmonchinh())
                 .into(viewHorder.imghinhmon);
-        viewHorder.Giatienmon.setText("Giá: "+dongMonChinh.getGiamon());
+        viewHorder.Giatienmon.setText("Giá: "+dongMonChinh.getGiamon()+" VNĐ");
         viewHorder.Loaimon.setText(dongMonChinh.getLoaimon());
         viewHorder.imgAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +111,22 @@ public class DongMonChinhAdapter extends BaseAdapter {
                     {
                         viewHorder.btnDatMon.setText("Đã đặt");
                         viewHorder.btnDatMon.setTextColor(Color.parseColor("#26FF00"));
-                        Bill.idMons.add(dongMonChinh.idMonchinh);
-                        Bill.soluongdat.add(viewHorder.Soluong.getText().toString());
+                        idMons.add(dongMonChinh.idMonchinh);
+                        soluongdat.add(viewHorder.Soluong.getText().toString());
+                        tonggiamon+=Integer.parseInt(dongMonChinh.getGiamon())*Integer.parseInt(viewHorder.Soluong.getText().toString());
+                        tonggiaban= Datban.giaban;
+                        if(dongMonChinh.getIdLoai().equals("1"))
+                        {
+                            Monchinhdachon.add(viewHorder.Soluong.getText().toString()+" "+dongMonChinh.getTenmonchinh());
+                        }
+                        if(dongMonChinh.getIdLoai().equals("2"))
+                        {
+                            TrangMiengdachon.add(viewHorder.Soluong.getText().toString()+" "+dongMonChinh.getTenmonchinh());
+                        }
+                        if(dongMonChinh.getIdLoai().equals("3"))
+                        {
+                            Giaikhatdachon.add(viewHorder.Soluong.getText().toString()+" "+dongMonChinh.getTenmonchinh());
+                        }
                         tem=1;
                     }
                     else{

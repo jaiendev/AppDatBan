@@ -49,7 +49,6 @@
         <RelativeLayout
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:orientation="horizontal"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:background="@drawable/custome_edittextsearch"
@@ -57,7 +56,7 @@
             android:layout_width="320dp"
             android:layout_height="0dp">
             <ImageView
-                android:id="@+id/imgsearch"
+                android:id="@+id/imgsearchGiaikhatCustomer"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="30dp"
                 android:background="#ECF0F1"
@@ -65,26 +64,19 @@
                 android:layout_width="20dp"
                 android:layout_height="28dp"/>
             <EditText
+                android:layout_marginTop="6dp"
+                android:id="@+id/editsearchGiaikhatCustomer"
                 android:layout_width="250dp"
-                android:hint="Tìm món... ?"
-                android:padding="5dp"
-                android:id="@+id/editsearchGiaiKhat"
+                android:layout_height="40dp"
+                android:layout_marginLeft="0dp"
+                android:layout_toRightOf="@id/imgsearchGiaikhatCustomer"
                 android:background="@drawable/custom_edittext"
-                android:textSize="15sp"
-                android:layout_toRightOf="@id/imgsearch"
-                android:layout_height="match_parent"/>
+                android:hint="Nhập nước uống... ?"
+                android:padding="5dp"
+                android:textSize="15sp" />
         </RelativeLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:weightSum="5"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="0.5"
-            android:layout_width="130dp"
-            android:layout_height="0dp">
-
-        </LinearLayout>
         <TextView
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="25dp"
             android:textSize="18sp"
             android:text="Nước uống hiện có"
@@ -96,7 +88,7 @@
             android:divider="@android:color/transparent"
             android:dividerHeight="8dp"
             android:id="@+id/listviewhomeGiaiKhat"
-            android:layout_weight="8.8"
+            android:layout_weight="9.3"
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
     </LinearLayout>

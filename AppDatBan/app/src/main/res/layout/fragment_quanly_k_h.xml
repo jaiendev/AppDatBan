@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeAdmin.QuanlyKH.QuanlyKH">
+
+    <LinearLayout
+        android:weightSum="12"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="8"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#DC2020"
+                android:textSize="20sp"
+                android:text="Nhóm 12"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/imgAdminquanlykhachhang"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:id="@+id/txtTenAdminquanlykhachhang"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="#B553677A"
+                android:textStyle="bold"
+                android:text=""
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/custome_edittextsearch"
+            android:layout_weight="1"
+            android:layout_width="320dp"
+            android:layout_height="0dp">
+            <ImageView
+                android:id="@+id/imgsearchtenkhachhang"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="30dp"
+                android:background="#ECF0F1"
+                android:src="@drawable/ic_baseline_search_24"
+                android:layout_width="20dp"
+                android:layout_height="28dp"/>
+            <EditText
+                android:layout_marginTop="6dp"
+                android:id="@+id/edtsearchKHAdmin"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="0dp"
+                android:layout_toRightOf="@id/imgsearchtenkhachhang"
+                android:background="@drawable/custom_edittext"
+                android:hint="Nhập nước uống... ?"
+                android:padding="5dp"
+                android:textSize="15sp" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.8"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_height="0dp">
+            <TextView
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Tên Khách Hàng"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Email"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/lstkh"
+            android:layout_weight="9"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

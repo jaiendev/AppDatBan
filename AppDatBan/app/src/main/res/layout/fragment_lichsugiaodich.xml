@@ -3,12 +3,146 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home.LichsugiaodichFragment">
+    tools:context=".Home.Lichsugiaodich.LichsugiaodichFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/liner1"
+        android:background="#E5E5E5"
+        android:weightSum="12"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <Toolbar
+            android:background="@color/white"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:textSize="17sp"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/holo_red_light"
+                android:text="Lịch sử giao dịch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </Toolbar>
+        <LinearLayout
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:layout_weight="0.2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:background="@drawable/custom_search_maban"
+                android:drawableStart="@drawable/ic_baseline_search_24"
+                android:textSize="12sp"
+                android:hint="Tìm kiếm mã đơn"
+                android:layout_weight="4.35"
+                android:layout_width="0dp"
+                android:layout_height="28dp"/>
+            <TextView
+                android:layout_weight="0.2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/Buttonreload"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_khung_reload"
+                android:src="@drawable/reload"
+                android:layout_weight="0.9"
+                android:layout_width="0dp"
+                android:layout_height="28dp"/>
+            <TextView
+                android:layout_weight="0.2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_weight="4"
+                android:background="@drawable/custom_tuan_thang"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <Button
+                    android:layout_gravity="center"
+                    android:backgroundTintMode="add"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:textColor="@color/white"
+                    android:background="@drawable/custom_tuan_thang"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:text="7 ngày"
+                    android:layout_width="0dp"
+                    android:layout_height="22dp"
+                    android:layout_weight="4.5" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5" />
+
+                <Button
+                    android:backgroundTintMode="add"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:background="@drawable/custom_tuan_thang"
+                    android:textSize="10sp"
+                    android:text="30 ngày"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="22dp"
+                    android:layout_weight="4.5" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:weightSum="12"
+            android:layout_weight="0.7"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Mã đơn"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Ngày đặt"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Tổng tiền"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/lstLichsugiaodich"
+            android:layout_marginTop="4dp"
+            android:layout_weight="9"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+    </LinearLayout>
 
 </FrameLayout>

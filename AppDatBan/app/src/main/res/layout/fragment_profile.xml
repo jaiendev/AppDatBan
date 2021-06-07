@@ -39,8 +39,69 @@
                     android:layout_height="wrap_content"/>
             </RelativeLayout>
         </LinearLayout>
+        <TextView
+            android:id="@+id/txtGmailUser"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:text="Gmail: trungdang29122000"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <LinearLayout
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:textSize="15sp"
+            android:layout_marginTop="2dp"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+
+                android:text="SĐT:"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:id="@+id/edtPhoneUser"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_tuan_thang"
+                android:layout_weight="4"
+                android:text="0868203860"
+                android:paddingLeft="7dp"
+                android:layout_width="0dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:gravity="center"
+                android:textColor="@android:color/holo_blue_dark"
+                android:text="Thay đổi"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <ImageButton
+                android:id="@+id/btnEditProfile"
+                android:src="@drawable/ic_edit_2"
+                android:background="@android:color/transparent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
         <Button
-            android:id="@+id/btnVivoucher"
+            android:id="@+id/btnvivoucher"
             android:textSize="15sp"
             android:padding="10dp"
             android:textAlignment="textStart"
@@ -52,36 +113,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
-            android:id="@+id/btnThanhtoan"
+            android:id="@+id/btnDoimatkhau"
             android:textSize="15sp"
             android:padding="10dp"
             android:textAlignment="textStart"
             android:textAllCaps="false"
-            android:text="Thanh toán"
-            android:layout_marginTop="2dp"
-            android:background="#FFFFFF"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"/>
-        <Button
-            android:id="@+id/btnChinhsachquidinh"
-            android:textSize="15sp"
-            android:padding="10dp"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:text="Chính sách qui định"
-            android:layout_marginTop="10dp"
-            android:background="#FFFFFF"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"/>
-        <Button
-            android:id="@+id/btnCaidat"
-            android:textSize="15sp"
-            android:padding="10dp"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:text="Cài đặt"
+            android:text="Đổi mật khẩu"
             android:layout_marginTop="2dp"
             android:background="#FFFFFF"
             android:layout_weight="1"

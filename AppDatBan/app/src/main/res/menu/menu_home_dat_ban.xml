@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/tatca"
+        android:title="Tất cả"/>
+    <item android:id="@+id/giadinh"
+        android:title="Gia đình"/>
+    <item android:id="@+id/banbe"
+        android:title="Bạn bè"/>
+    <item android:id="@+id/capdoi"
+        android:title="Cặp đôi"/>
+</menu>

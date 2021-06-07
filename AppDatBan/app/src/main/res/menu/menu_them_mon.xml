@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/Monchinhthemmon"
+        android:title="Món chính"/>
+    <item android:id="@+id/TrangMiengthemmon"
+        android:title="Trán miệng"/>
+    <item android:id="@+id/Nuocthemmon"
+        android:title="Nước"/>
+</menu>

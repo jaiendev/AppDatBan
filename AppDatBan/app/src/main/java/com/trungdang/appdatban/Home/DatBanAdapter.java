@@ -68,7 +68,7 @@ public class DatBanAdapter extends BaseAdapter {
         Glide.with(context)
                 .load(datbanhome.getHinhdatban())
                 .into(viewHorder.imghinhdatban);
-        viewHorder.Giatien.setText("Giá chung: "+datbanhome.getGiatien());
+        viewHorder.Giatien.setText("Giá chung: "+datbanhome.getGiatien() +"VNĐ/3 giờ");
         viewHorder.Theloai.setText(datbanhome.getTheloai());
         return convertView;
     }

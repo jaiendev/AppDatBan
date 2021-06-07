@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/tatcamonan"
+        android:title="Tất cả"/>
+    <item android:id="@+id/monchinh"
+        android:title="Món chính"/>
+    <item android:id="@+id/trangmieng"
+        android:title="Tráng miệng"/>
+    <item android:id="@+id/giaikhat"
+        android:title="Nước"/>
+</menu>

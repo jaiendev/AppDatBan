@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -55,7 +56,8 @@ public class Monchinh extends Fragment {
     ArrayList<DongMonChinh> dongMonChinhArrayList;
     String IDUser;
     TextView txtTenUser;
-    ImageView imageViewHinhUser;
+    ImageView imageViewHinhUser,imgsearch;
+    EditText edtSearch;
 
     public Monchinh() {
         // Required empty public constructor
@@ -116,6 +118,14 @@ public class Monchinh extends Fragment {
         fStorage        = FirebaseStorage.getInstance();
         storageRef      = fStorage.getReference();
         IDUser=fAuth.getCurrentUser().getUid();
+        imgsearch=view.findViewById(R.id.imgsearchmonCustomer);
+        edtSearch=view.findViewById(R.id.editsearchmonCustomer);
+        imgsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchMonChinh();
+            }
+        });
         GetProducts();
         getNameUser();
         getBill();
@@ -153,6 +163,7 @@ public class Monchinh extends Fragment {
         });
     }
     public void GetProducts() {
+        dongMonChinhArrayList.clear();
         CollectionReference productRefs = fStore.collection("Eaten");
         productRefs.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -172,6 +183,48 @@ public class Monchinh extends Fragment {
                         {
                             DongMonChinh Mon = new DongMonChinh(idloai,id,hinh,tenmon,"1",gia,Tenloai);
                             dongMonChinhArrayList.add(Mon);
+                        }
+
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TAG","Error");
+            }
+        });
+    }
+    public void SearchMonChinh() {
+        dongMonChinhArrayList.clear();
+        CollectionReference productRefs = fStore.collection("Eaten");
+        productRefs.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public  void onSuccess(QuerySnapshot documentSnapshots) {
+                if (documentSnapshots.isEmpty()) {
+                    Log.d("TAG", "onSuccess: LIST EMPTY");
+                    return;
+                } else {
+                    for (DocumentSnapshot document : documentSnapshots) {
+                        String id           = document.getId();
+                        String tenmon         = (String) document.get("TenMon");
+                        String gia       = (String) document.get("GiaTien");
+                        String Tenloai  = (String) document.get("TenLoai");
+                        String hinh    =  (String) document.get("Hinh");
+                        String idloai =(String) document.get("idLoai");
+                        if(idloai.equals("1"))
+                        {
+                            if(edtSearch.getText().toString().toLowerCase().equals(tenmon.toLowerCase()))
+                            {
+                                DongMonChinh Mon = new DongMonChinh(idloai,id,hinh,tenmon,"1",gia,Tenloai);
+                                dongMonChinhArrayList.add(Mon);
+                            }
+                            if(edtSearch.getText().toString().equals(""))
+                            {
+                                DongMonChinh Mon = new DongMonChinh(idloai,id,hinh,tenmon,"1",gia,Tenloai);
+                                dongMonChinhArrayList.add(Mon);
+                            }
                         }
 
                     }

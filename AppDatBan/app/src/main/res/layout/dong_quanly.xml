@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout
+    android:id="@+id/swiperevealLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutphu"
+        android:layout_marginLeft="10dp"
+        android:layout_width="100dp"
+        android:layout_height="73dp"
+        android:background="#FF0000">
+
+        <ImageView
+            android:id="@+id/imgthungrac"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_delete" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativechinh"
+        android:padding="8dp"
+        android:background="@drawable/custom_listview"
+        android:outlineSpotShadowColor="@color/cardview_shadow_end_color"
+        android:outlineAmbientShadowColor="@color/cardview_shadow_end_color"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/imghinhdatbanAdmin"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"/>
+        <TextView
+            android:id="@+id/txtsobanAdmin"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/imghinhdatbanAdmin"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:text="Số bàn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="12sp"
+            android:id="@+id/txtmotaAdmin"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/imghinhdatbanAdmin"
+            android:layout_below="@id/txtsobanAdmin"
+            android:text="2 Người lớn, 0 Trẻ em"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="12sp"
+            android:id="@+id/txtgiatienAdmin"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/imghinhdatbanAdmin"
+            android:layout_below="@id/txtmotaAdmin"
+            android:textColor="@color/black"
+            android:text="Giá chung: 500.000vnd/3 giờ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="8sp"
+            android:id="@+id/txtthethucAdmin"
+            android:layout_toRightOf="@id/txtsobanAdmin"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Cặp đôi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

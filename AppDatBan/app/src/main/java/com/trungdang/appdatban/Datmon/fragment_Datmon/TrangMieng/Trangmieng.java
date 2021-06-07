@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -55,7 +56,8 @@ public class Trangmieng extends Fragment {
     ArrayList<DongMonChinh> TrangmiengArratlist;
     String IDUser;
     TextView txtTenUser;
-    ImageView imageViewHinhUser;
+    ImageView imageViewHinhUser,imgsearch;
+    EditText edtSearch;
     public Trangmieng() {
         // Required empty public constructor
     }
@@ -107,6 +109,14 @@ public class Trangmieng extends Fragment {
         fStorage        = FirebaseStorage.getInstance();
         storageRef      = fStorage.getReference();
         IDUser=fAuth.getCurrentUser().getUid();
+        imgsearch=view.findViewById(R.id.imgsearchTrangMiengCustomer);
+        edtSearch=view.findViewById(R.id.editsearchTrangmiengCustomer);
+        imgsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchTrangMieng();
+            }
+        });
         GetProducts();
         getNameUser();
     }
@@ -136,6 +146,7 @@ public class Trangmieng extends Fragment {
         });
     }
     public void GetProducts() {
+        TrangmiengArratlist.clear();
         CollectionReference productRefs = fStore.collection("Eaten");
         productRefs.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -168,5 +179,46 @@ public class Trangmieng extends Fragment {
             }
         });
     }
+    public void SearchTrangMieng() {
+        TrangmiengArratlist.clear();
+        CollectionReference productRefs = fStore.collection("Eaten");
+        productRefs.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public  void onSuccess(QuerySnapshot documentSnapshots) {
+                if (documentSnapshots.isEmpty()) {
+                    Log.d("TAG", "onSuccess: LIST EMPTY");
+                    return;
+                } else {
+                    for (DocumentSnapshot document : documentSnapshots) {
+                        String id           = document.getId();
+                        String tenmon         = (String) document.get("TenMon");
+                        String gia       = (String) document.get("GiaTien");
+                        String Tenloai  = (String) document.get("TenLoai");
+                        String hinh    =  (String) document.get("Hinh");
+                        String idloai =(String) document.get("idLoai");
+                        if(idloai.equals("2"))
+                        {
+                            if(edtSearch.getText().toString().toLowerCase().equals(tenmon.toLowerCase()))
+                            {
+                                DongMonChinh Mon = new DongMonChinh(idloai,id,hinh,tenmon,"1",gia,Tenloai);
+                                TrangmiengArratlist.add(Mon);
+                            }
+                            if(edtSearch.getText().toString().equals(""))
+                            {
+                                DongMonChinh Mon = new DongMonChinh(idloai,id,hinh,tenmon,"1",gia,Tenloai);
+                                TrangmiengArratlist.add(Mon);
+                            }
+                        }
 
+                    }
+                    TrangMiengadapter.notifyDataSetChanged();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TAG","Error");
+            }
+        });
+    }
 }

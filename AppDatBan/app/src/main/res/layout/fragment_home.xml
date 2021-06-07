@@ -46,55 +46,63 @@
                android:layout_width="0dp"
                android:layout_height="match_parent"/>
        </LinearLayout>
-       <RelativeLayout
-           android:orientation="horizontal"
-           android:layout_marginTop="20dp"
-           android:layout_gravity="center"
-           android:background="@drawable/custome_edittextsearch"
-           android:layout_weight="1"
-           android:layout_width="320dp"
-           android:layout_height="0dp">
-           <ImageView
-               android:id="@+id/imgsearch"
-               android:layout_marginTop="12dp"
-               android:layout_marginLeft="30dp"
-               android:background="#ECF0F1"
-               android:src="@drawable/ic_baseline_search_24"
-               android:layout_width="20dp"
-               android:layout_height="28dp"/>
-           <EditText
-               android:layout_width="250dp"
-               android:hint="Bạn muốn gặp gỡ... ?"
-               android:padding="5dp"
-               android:id="@+id/editsearch"
-               android:background="@drawable/custom_edittext"
-               android:textSize="15sp"
-               android:layout_toRightOf="@id/imgsearch"
-               android:layout_height="match_parent"/>
-       </RelativeLayout>
        <LinearLayout
            android:orientation="horizontal"
-           android:weightSum="5"
-           android:layout_marginLeft="200dp"
-           android:layout_marginTop="20dp"
-           android:background="@drawable/custome_buttontatca"
+           android:weightSum="12"
            android:layout_weight="0.5"
-           android:layout_width="130dp"
+           android:layout_width="match_parent"
            android:layout_height="0dp">
-           <TextView
-               android:id="@+id/txttatca"
-               android:textColor="@color/black"
-               android:gravity="center"
-               android:textSize="15sp"
-               android:text="Tất cả"
-               android:layout_weight="4"
+           <LinearLayout
+               android:layout_marginLeft="25dp"
+               android:orientation="horizontal"
+               android:weightSum="5"
+               android:background="@drawable/custome_buttontatca"
+               android:layout_weight="5"
                android:layout_width="0dp"
-               android:layout_height="match_parent"/>
-           <ImageView
-               android:src="@drawable/ic_baseline_down"
+               android:layout_height="match_parent">
+               <TextView
+                   android:id="@+id/txtGiamdanCustomer"
+                   android:textColor="@color/black"
+                   android:gravity="center"
+                   android:textSize="15sp"
+                   android:text="Giảm dần"
+                   android:layout_weight="4"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"/>
+               <ImageView
+                   android:id="@+id/btnChongiaCustomer"
+                   android:src="@drawable/ic_baseline_down"
+                   android:layout_weight="1"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"/>
+           </LinearLayout>
+           <TextView
                android:layout_weight="1"
                android:layout_width="0dp"
                android:layout_height="match_parent"/>
+           <LinearLayout
+               android:orientation="horizontal"
+               android:weightSum="5"
+               android:background="@drawable/custome_buttontatca"
+               android:layout_weight="5"
+               android:layout_width="0dp"
+               android:layout_height="match_parent">
+               <TextView
+                   android:id="@+id/txttatcaCustomer"
+                   android:textColor="@color/black"
+                   android:gravity="center"
+                   android:textSize="15sp"
+                   android:text="Tất cả"
+                   android:layout_weight="4"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"/>
+               <ImageView
+                   android:id="@+id/btnChonCustomer"
+                   android:src="@drawable/ic_baseline_down"
+                   android:layout_weight="1"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"/>
+           </LinearLayout>
        </LinearLayout>
        <TextView
            android:layout_marginLeft="25dp"
@@ -107,7 +115,7 @@
            android:divider="@android:color/transparent"
            android:dividerHeight="8dp"
            android:id="@+id/listviewhome"
-           android:layout_weight="8.8"
+           android:layout_weight="9.8"
            android:layout_width="match_parent"
            android:layout_height="0dp"/>
    </LinearLayout>

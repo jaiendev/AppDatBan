@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeAdmin.Quanlyban.Addban">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_dialog_them"
+        android:orientation="vertical"
+        android:weightSum="20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="Thêm bàn"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="12">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="Chọn hình:"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/Chonhinhdialogban"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_weight="2.5"
+                android:src="@drawable/chibinaruto" />
+            <TextView
+                android:id="@+id/txtchonanhmo"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:textColor="@android:color/holo_blue_dark"
+                android:text="Chọn ảnh"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="Tên bàn:"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/edttenbandialogquanlyban"
+            android:layout_width="280dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_edittext"
+            android:paddingLeft="5dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="Dành cho:"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:focusableInTouchMode="false"
+            android:id="@+id/edtDanhchodialogquanlyban"
+            android:layout_width="280dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_edittext"
+            android:drawableEnd="@drawable/ic_baseline_down"
+            android:paddingLeft="5dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="Giá:"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:inputType="number"
+            android:id="@+id/edtgiabandialogquanlyban"
+            android:layout_width="280dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_edittext"
+            android:paddingLeft="5dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="Số người lớn:"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:inputType="number"
+            android:id="@+id/edtnguoilondialogquanlyban"
+            android:layout_width="280dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_edittext"
+            android:paddingLeft="5dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="Số trẻ em:"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:inputType="number"
+            android:id="@+id/edttreemdialogquanlyban"
+            android:layout_width="280dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_edittext"
+            android:paddingLeft="5dp"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/Btnthemdialogquanlyban"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/custom_buttonadd"
+            android:text="Thêm"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

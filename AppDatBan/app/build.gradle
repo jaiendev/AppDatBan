@@ -13,7 +13,6 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -40,6 +39,15 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    implementation 'gun0912.ted:tedbottompicker:2.0.1'
+    implementation 'gun0912.ted:tedpermission-rx1:2.2.3'
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
 }
 repositories {
     google()
@@ -47,7 +55,6 @@ repositories {
 }
 dependencies {
     implementation 'com.google.firebase:firebase-firestore:22.1.2'
-
     implementation 'com.google.firebase:firebase-storage:19.2.2'
     implementation 'de.hdodenhof:circleimageview:1.2.1'
 }

@@ -6,12 +6,13 @@ public class DongBill {
     private String Tenmon;
     private String Giatien;
     private String Soluong;
-
-    public DongBill(String idmon, String tenmon, String giatien, String soluong) {
+    private int tongtien;
+    public DongBill(String idmon, String tenmon, String giatien, String soluong,int tongtien) {
         this.idmon = idmon;
         Tenmon = tenmon;
         Giatien = giatien;
         Soluong = soluong;
+        this.tongtien=tongtien;
     }
 
     public String getIdmon() {
@@ -44,5 +45,17 @@ public class DongBill {
 
     public void setSoluong(String soluong) {
         Soluong = soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
+
+    public int getTongtien() {
+        return tongtien;
+    }
+
+    public void setTongtien(int tongtien) {
+        this.tongtien = tongtien;
     }
 }

@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +19,8 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -26,6 +30,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.trungdang.appdatban.MainActivity;
 import com.trungdang.appdatban.R;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,8 +55,11 @@ public class ProfileFragment extends Fragment {
     StorageReference storageRef;
     FirebaseAuth fAuth=FirebaseAuth.getInstance();
     ImageView imgHinhUser;
-    TextView txtTenUser;
+    EditText ediPhone;
+    TextView txtEmail,txtTenUser;
+    ImageButton btnEditProfile;
     String IDUser;
+    int tam=1;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -93,7 +103,41 @@ public class ProfileFragment extends Fragment {
         storageRef      = fStorage.getReference();
         IDUser=fAuth.getCurrentUser().getUid();
         imgHinhUser = view.findViewById(R.id.imganhdaidien);
+        ediPhone=view.findViewById(R.id.edtPhoneUser);
+        txtEmail=view.findViewById(R.id.txtGmailUser);
         txtTenUser=view.findViewById(R.id.txtTenUserProfile);
+        btnEditProfile=view.findViewById(R.id.btnEditProfile);
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tam==1)
+                {
+                    btnEditProfile.setImageResource(R.drawable.ic_save);
+                    ediPhone.setEnabled(true);
+                    tam=-1;
+                }
+                else {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("sodienthoai", ediPhone.getText().toString());
+
+
+                    fStore.collection("Users").document(IDUser).update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("TAG", "Successfully updated!");
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("TAG", "Unsuccessfully updated!");
+                        }
+                    });
+                    btnEditProfile.setImageResource(R.drawable.ic_edit_2);
+                    ediPhone.setEnabled(false);
+                    tam=1;
+                }
+            }
+        });
         getNameUser();
         imgHinhUser.setImageBitmap(circularBitmap);
         Dangxuat(view);
@@ -110,7 +154,11 @@ public class ProfileFragment extends Fragment {
                     if (document.exists()) {
                         String Img  = document.getString("Avatar");
                         String name = document.getString("ten");
+                        String email=document.getString("email");
+                        String phone=document.getString("sodienthoai");
                         txtTenUser.setText(name);
+                        txtEmail.setText("Gmail: "+email);
+                        ediPhone.setText(phone);
                         Glide.with(getActivity())
                                 .load(Img)
                                 .into(imgHinhUser);

@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,10 +30,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.trungdang.appdatban.Datban.Datban;
-import com.trungdang.appdatban.Datmon.fragment_Datmon.Bill.Bill;
+import com.trungdang.appdatban.Home.Lichsugiaodich.LichsugiaodichFragment;
 import com.trungdang.appdatban.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,7 +48,8 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    int d=1;
+    int c=-1;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -59,6 +64,8 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
     TextView txtTenUser;
     String idban;
     ImageView imageViewHinhUser;
+    ImageView imgChon,imgChonGia;
+    TextView txtTatca,txtGiamdan;
     public HomeFragment() {
         String idBan=idban;
         // Required empty public constructor
@@ -113,7 +120,6 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
                 intent.putExtra("giaban",giaban);
                 intent.putExtra("theloai",theloai);
                 intent.putExtra("id",idban);
-                Bill.idbans=idban;
                 intent.putExtra("hinh",Hinh);
                 getContext().startActivity(intent);
                 getActivity().finish();
@@ -125,6 +131,22 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
         listView=view.findViewById(R.id.listviewhome);
         txtTenUser=view.findViewById(R.id.txtTenUser);
         imageViewHinhUser=view.findViewById(R.id.imgHomeCustomer);
+        imgChon=view.findViewById(R.id.btnChonCustomer);
+        txtTatca=view.findViewById(R.id.txttatcaCustomer);
+        imgChonGia=view.findViewById(R.id.btnChongiaCustomer);
+        txtGiamdan=view.findViewById(R.id.txtGiamdanCustomer);
+        imgChon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuPopup();
+            }
+        });
+        imgChonGia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuPopupGia();
+            }
+        });
         datbanhomeArrayList=new ArrayList<>();
         datBanAdapter=new DatBanAdapter(getActivity(),R.layout.dong_dat_ban,datbanhomeArrayList);
         listView.setAdapter(datBanAdapter);
@@ -133,7 +155,8 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
         fStorage        = FirebaseStorage.getInstance();
         storageRef      = fStorage.getReference();
         IDUser=fAuth.getCurrentUser().getUid();
-        GetProducts();
+        LichsugiaodichFragment.IdUser=IDUser;
+        GetProductsGiam();
         getNameUser();
     }
     public void getNameUser(){
@@ -160,8 +183,10 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
             }
         }
         });
+
     }
-    public void GetProducts() {
+    public void GetProductsTang() {
+        datbanhomeArrayList.clear();
         CollectionReference productRefs = fStore.collection("Products");
         productRefs.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -179,6 +204,20 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
                         String hinh    =  (String) document.get("Hinh");
                         Datbanhome product = new Datbanhome(id,hinh,tenban,soluong,gia,theloai);
                         datbanhomeArrayList.add(product);
+                        Collections.sort(datbanhomeArrayList, new Comparator<Datbanhome>() {
+                            @Override
+                            public int compare(Datbanhome dt1, Datbanhome dt2) {
+                                if (Integer.parseInt(dt1.getGiatien()) < Integer.parseInt(dt2.getGiatien())) {
+                                    return -1;
+                                } else {
+                                    if (Integer.parseInt(dt1.getGiatien()) == Integer.parseInt(dt2.getGiatien())) {
+                                        return 0;
+                                    } else {
+                                        return 1;
+                                    }
+                                }
+                            }
+                        });
                     }
                     datBanAdapter.notifyDataSetChanged();
                 }
@@ -187,6 +226,242 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.d("TAG","Error");
+            }
+        });
+
+    }
+    public void GetProductsGiam() {
+        datbanhomeArrayList.clear();
+        CollectionReference productRefs = fStore.collection("Products");
+        productRefs.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public  void onSuccess(QuerySnapshot documentSnapshots) {
+                if (documentSnapshots.isEmpty()) {
+                    Log.d("TAG", "onSuccess: LIST EMPTY");
+                    return;
+                } else {
+                    for (DocumentSnapshot document : documentSnapshots) {
+                        String id           = document.getId();
+                        String tenban         = (String) document.get("Tenban");
+                        String gia       = (String) document.get("Gia");
+                        String theloai  = (String) document.get("Loai");
+                        String soluong     = (String) document.get("Soluong");
+                        String hinh    =  (String) document.get("Hinh");
+                        Datbanhome product = new Datbanhome(id,hinh,tenban,soluong,gia,theloai);
+                        datbanhomeArrayList.add(product);
+                        Collections.sort(datbanhomeArrayList, new Comparator<Datbanhome>() {
+                            @Override
+                            public int compare(Datbanhome dt1, Datbanhome dt2) {
+                                if (Integer.parseInt(dt1.getGiatien()) < Integer.parseInt(dt2.getGiatien())) {
+                                    return 1;
+                                } else {
+                                    if (Integer.parseInt(dt1.getGiatien()) == Integer.parseInt(dt2.getGiatien())) {
+                                        return 0;
+                                    } else {
+                                        return -1;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                    datBanAdapter.notifyDataSetChanged();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TAG","Error");
+            }
+        });
+
+    }
+    public void GetTableTheoyeucauTang(String yeucau) {
+        datbanhomeArrayList.clear();
+        CollectionReference productRefs = fStore.collection("Products");
+        productRefs.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public  void onSuccess(QuerySnapshot documentSnapshots) {
+                if (documentSnapshots.isEmpty()) {
+                    Log.d("TAG", "onSuccess: LIST EMPTY");
+                    return;
+                } else {
+                    for (DocumentSnapshot document : documentSnapshots) {
+                        String id           = document.getId();
+                        String tenban         = (String) document.get("Tenban");
+                        String gia       = (String) document.get("Gia");
+                        String theloai  = (String) document.get("Loai");
+                        String soluong     = (String) document.get("Soluong");
+                        String hinh    =  (String) document.get("Hinh");
+                        if(yeucau.equals(theloai))
+                        {
+                            Datbanhome product = new Datbanhome(id,hinh,tenban,soluong,gia,theloai);
+                            datbanhomeArrayList.add(product);
+                            Collections.sort(datbanhomeArrayList, new Comparator<Datbanhome>() {
+                                @Override
+                                public int compare(Datbanhome dt1, Datbanhome dt2) {
+                                    if (Integer.parseInt(dt1.getGiatien()) < Integer.parseInt(dt2.getGiatien())) {
+                                        return -1;
+                                    } else {
+                                        if (Integer.parseInt(dt1.getGiatien()) == Integer.parseInt(dt2.getGiatien())) {
+                                            return 0;
+                                        } else {
+                                            return 1;
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                    datBanAdapter.notifyDataSetChanged();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TAG","Error");
+            }
+        });
+    }
+    public void GetTableTheoyeucauGiam(String yeucau) {
+        datbanhomeArrayList.clear();
+        CollectionReference productRefs = fStore.collection("Products");
+        productRefs.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public  void onSuccess(QuerySnapshot documentSnapshots) {
+                if (documentSnapshots.isEmpty()) {
+                    Log.d("TAG", "onSuccess: LIST EMPTY");
+                    return;
+                } else {
+                    for (DocumentSnapshot document : documentSnapshots) {
+                        String id           = document.getId();
+                        String tenban         = (String) document.get("Tenban");
+                        String gia       = (String) document.get("Gia");
+                        String theloai  = (String) document.get("Loai");
+                        String soluong     = (String) document.get("Soluong");
+                        String hinh    =  (String) document.get("Hinh");
+                        if(yeucau.equals(theloai))
+                        {
+                            Datbanhome product = new Datbanhome(id,hinh,tenban,soluong,gia,theloai);
+                            datbanhomeArrayList.add(product);
+                            Collections.sort(datbanhomeArrayList, new Comparator<Datbanhome>() {
+                                @Override
+                                public int compare(Datbanhome dt1, Datbanhome dt2) {
+                                    if (Integer.parseInt(dt1.getGiatien()) < Integer.parseInt(dt2.getGiatien())) {
+                                        return 1;
+                                    } else {
+                                        if (Integer.parseInt(dt1.getGiatien()) == Integer.parseInt(dt2.getGiatien())) {
+                                            return 0;
+                                        } else {
+                                            return -1;
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                    datBanAdapter.notifyDataSetChanged();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TAG","Error");
+            }
+        });
+    }
+    private void MenuPopup()
+    {
+        PopupMenu popupMenu=new PopupMenu(getActivity(),imgChon);
+        popupMenu.getMenuInflater().inflate(R.menu.menu_home_dat_ban,popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.tatca:
+                        txtTatca.setText("Tất cả");
+                        if(txtGiamdan.getText().toString().equals("Giảm dần"))
+                        {
+                            GetProductsGiam();
+                        }
+                        GetProductsTang();
+                        break;
+                    case R.id.giadinh:
+                        txtTatca.setText("Gia đình");
+                        if(txtGiamdan.getText().toString().equals("Giảm dần"))
+                        {
+                            GetTableTheoyeucauGiam(txtTatca.getText().toString());
+                        }
+                        GetTableTheoyeucauTang(txtTatca.getText().toString());
+                        break;
+                    case R.id.banbe:
+                        txtTatca.setText("Bạn bè");
+                        if(txtGiamdan.getText().toString().equals("Giảm dần"))
+                        {
+                            GetTableTheoyeucauGiam(txtTatca.getText().toString());
+                        }
+                        GetTableTheoyeucauTang(txtTatca.getText().toString());
+                        break;
+                    case R.id.capdoi:
+                        txtTatca.setText("Cặp đôi");
+                        if(txtGiamdan.getText().toString().equals("Giảm dần"))
+                        {
+                            GetTableTheoyeucauGiam(txtTatca.getText().toString());
+                        }
+                        GetTableTheoyeucauTang(txtTatca.getText().toString());
+                        break;
+                }
+                return false;
+            }
+        });
+        popupMenu.show();
+    }
+    private void MenuPopupGia()
+    {
+        PopupMenu popupMenu=new PopupMenu(getActivity(),imgChonGia);
+        popupMenu.getMenuInflater().inflate(R.menu.menu_home_dat_mon,popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.giamdan:
+                        d=1;
+                        c=-1;
+                        txtGiamdan.setText("Giảm dần");
+                        if(txtTatca.getText().toString().equals("Tất cả"))
+                        {
+                            GetProductsGiam();
+                        }
+                        GetTableTheoyeucauGiam(txtTatca.getText().toString());
+                        break;
+                    case R.id.tangdan:
+                        d=-1;
+                        c=1;
+                        txtGiamdan.setText("Tăng dần");
+                        if(txtTatca.getText().toString().equals("Tất cả"))
+                        {
+                            GetProductsTang();
+                        }
+                        GetTableTheoyeucauTang(txtTatca.getText().toString());
+                        break;
+                }
+                return false;
+            }
+        });
+        popupMenu.show();
+    }
+    private void Swap(){
+        Collections.sort(datbanhomeArrayList, new Comparator<Datbanhome>() {
+            @Override
+            public int compare(Datbanhome dt1, Datbanhome dt2) {
+                if (Integer.parseInt(dt1.getGiatien()) < Integer.parseInt(dt2.getGiatien())) {
+                    return 1;
+                } else {
+                    if (Integer.parseInt(dt1.getGiatien()) == Integer.parseInt(dt2.getGiatien())) {
+                        return 0;
+                    } else {
+                        return -1;
+                    }
+                }
             }
         });
     }

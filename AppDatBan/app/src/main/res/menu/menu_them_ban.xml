@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/Giadinhthemban"
+        android:title="Gia đình"/>
+    <item android:id="@+id/Banebthemban"
+        android:title="Bạn bè"/>
+    <item android:id="@+id/capdoithemban"
+        android:title="Cặp đôi"/>
+
+</menu>

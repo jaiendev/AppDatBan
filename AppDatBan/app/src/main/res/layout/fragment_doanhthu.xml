@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeAdmin.Doanhthu.Doanhthu">
+
+    <LinearLayout
+        android:weightSum="12"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="8"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#DC2020"
+                android:textSize="20sp"
+                android:text="Nhóm 12"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/imgHomeCustomerGiaiKhat"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:id="@+id/txtTenUserGiaKhat"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="#B553677A"
+                android:textStyle="bold"
+                android:text=""
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="2.3"
+            android:weightSum="5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <LinearLayout
+
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/custom_donhang_tongphi"
+                android:weightSum="3"
+                android:orientation="vertical"
+                android:layout_weight="1.8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:text="Đơn hàng"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
+                <TextView
+                    android:id="@+id/txtTongDonhang"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="100"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
+            </LinearLayout>
+            <TextView
+                android:layout_weight="1.1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:background="@drawable/custom_donhang_tongphi"
+                android:weightSum="3"
+                android:orientation="vertical"
+                android:layout_weight="1.8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:text="Tổng phí"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
+                <TextView
+                    android:id="@+id/txtTongtienDoanhthu"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="100"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/linechart"
+            android:layout_marginLeft="30dp"
+            android:layout_width="300dp"
+            android:layout_height="0dp"
+            android:layout_weight="6" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.7"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <Button
+                android:id="@+id/btn30ngay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_tuan_thang"
+                android:gravity="center"
+                android:text="30 ngày"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/primarycolor"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</FrameLayout>
